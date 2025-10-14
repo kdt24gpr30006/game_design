@@ -13,6 +13,7 @@ void Enemy::HpDown(int num)
 
 bool Enemy::IsDead()
 {
+	// HP‚ª0ˆÈ‰º‚È‚çtrue
 	if (HP <= 0)
 	{
 		printf("%s‚Í“|‚ê‚½\n\n", Name);

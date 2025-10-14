@@ -1,6 +1,7 @@
 #include "EnemyFactor.h"
 #include "Enemy.h"
 
+// データテーブル
 const EnemyData EnemyFactory::EnemyTable[] = 
 {
     { 1, "Slime", 20, 5},
@@ -8,11 +9,12 @@ const EnemyData EnemyFactory::EnemyTable[] =
     { 3, "Dragon", 100, 20}
 };
 
+// データテーブルのサイズ
 const int EnemyFactory::EnemyTableSize = sizeof(EnemyFactory::EnemyTable) / sizeof(EnemyFactory::EnemyTable[0]);
 
 Enemy* EnemyFactory::CreateEnemy(int ID)
 {
-    // 敵のデータテーブルを検索
+    // データテーブルを検索
     for (int i = 0; i < EnemyTableSize; ++i) 
     {
         if (EnemyTable[i].ID == ID) 

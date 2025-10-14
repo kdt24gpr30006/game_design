@@ -19,6 +19,7 @@ void Player::Heal()
 
 bool Player::IsDead()
 {
+	// HP‚ª0ˆÈ‰º‚È‚çtrue
 	if (HP <= 0)
 	{
 		printf("Player‚Í“|‚ê‚½\n\n");

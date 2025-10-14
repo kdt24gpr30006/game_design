@@ -1,9 +1,9 @@
 #pragma once
-#include "SceneManager.h"
 #include <iostream>
-#include "Enemy.h"
 #include <memory>
 #include <vector>
+#include "SceneManager.h"
+#include "Enemy.h"
 #include "Player.h"
 
 class GameScene : public Scene
@@ -15,10 +15,18 @@ public:
 	
 	GameScene() {}
 	~GameScene() {}
+
+	// プレイヤーのターン
+	void PlayerTrun();
+
+	// 敵のターン
+	void EnemyTrun();
+
+	// ゲーム終了
+	void GameEnd(bool isWin);
+
 	// 初期化
 	void Init() override;
 	// 更新
 	void Update() override;
-	// 終了
-	void Exit() override;
 };

@@ -3,9 +3,9 @@
 
 class Player
 {
-
 public:
 
+	// ステータス
 	int HP = 0;
 	int ATK = 0;
 	int HEAL = 0;

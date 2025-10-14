@@ -12,8 +12,6 @@ public:
 	virtual void Init() = 0;
 	// XV
 	virtual void Update() = 0;
-	// I—¹
-	virtual void Exit() = 0;
 };
 
 

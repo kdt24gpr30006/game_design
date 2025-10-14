@@ -1,8 +1,6 @@
-#include "TitleScene.h"
 #include <iostream>
-#include <Windows.h>
+#include "TitleScene.h"
 #include "GameScene.h"
-
 
 void TitleScene::Init()
 {
@@ -13,8 +11,9 @@ void TitleScene::Update()
 {
 	while (true)
 	{
-		printf("1でゲームシーンへ\n\n");
+		printf("1でゲームシーン 2で終了\n\n");
 
+		// 入力された数値を保存
 		int inputNum = 0;
 		std::cin >> inputNum;
 
@@ -24,13 +23,15 @@ void TitleScene::Update()
 			GameObject::GetInstance().SetScene(std::make_unique<GameScene>());
 			break;
 		}
+		// 2だと終了
+		else if (inputNum == 2)
+		{
+			exit(0);
+			break;
+		}
 		else
 		{
 			printf("無効な数字です\n\n");
 		}
 	}
-}
-
-void TitleScene::Exit()
-{
 }

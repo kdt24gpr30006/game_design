@@ -10,6 +10,4 @@ public:
 	void Init() override;
 	// XV
 	void Update() override;
-	// I—¹
-	void Exit() override;
 };

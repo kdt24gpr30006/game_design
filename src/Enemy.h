@@ -1,10 +1,11 @@
 #pragma once
-#include "EnemyData.h"
 #include <iostream>
+#include "EnemyData.h"
 
 class Enemy {
 
 public:
+	// ステータス
 	int ID;
 	const char* Name;
 	int HP;
