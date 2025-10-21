@@ -28,6 +28,12 @@
     <Filter Include="ソース ファイル\Entity">
       <UniqueIdentifier>{bc790f41-f7f5-441b-914f-4b5aeb4b6631}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\design">
+      <UniqueIdentifier>{aad578a1-5bfa-4344-aba1-693b85710bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\design">
+      <UniqueIdentifier>{76d7c427-106e-401e-ba3a-0fbc9bbef0e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\TitleScene.cpp">
@@ -42,14 +48,14 @@
     <ClCompile Include="src\gamedesign.cpp">
       <Filter>ソース ファイル\main</Filter>
     </ClCompile>
-    <ClCompile Include="src\EnemyFactor.cpp">
-      <Filter>ソース ファイル\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="src\Player.cpp">
       <Filter>ソース ファイル\Entity</Filter>
     </ClCompile>
     <ClCompile Include="src\Enemy.cpp">
       <Filter>ソース ファイル\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EnemyFactor.cpp">
+      <Filter>ソース ファイル\design</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,14 +71,17 @@
     <ClInclude Include="src\Player.h">
       <Filter>ヘッダー ファイル\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="src\EnemyData.h">
-      <Filter>ヘッダー ファイル\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EnemyFactor.h">
-      <Filter>ヘッダー ファイル\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="src\Enemy.h">
       <Filter>ヘッダー ファイル\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EnemyData.h">
+      <Filter>ヘッダー ファイル\design</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EnemyFactor.h">
+      <Filter>ヘッダー ファイル\design</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ObjectPool.h">
+      <Filter>ヘッダー ファイル\design</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -140,6 +140,7 @@
     <ClInclude Include="src\EnemyData.h" />
     <ClInclude Include="src\EnemyFactor.h" />
     <ClInclude Include="src\GameScene.h" />
+    <ClInclude Include="src\ObjectPool.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\SceneManager.h" />
     <ClInclude Include="src\TitleScene.h" />

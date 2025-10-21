@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player::Attack()
+void Player::Attack() const
 {
 	printf("Playerの攻撃  %dのダメージ\n\n", ATK);
 }
@@ -17,7 +17,7 @@ void Player::Heal()
 	printf("Playerは%d回復した。 現在のHP %d\n\n", HEAL, HP);
 }
 
-bool Player::IsDead()
+bool Player::IsDead() const
 {
 	// HPが0以下ならtrue
 	if (HP <= 0)

@@ -14,7 +14,7 @@ public:
 	~Player() {}
 
 	// UŒ‚
-	void Attack();
+	void Attack() const;
 
 	// ƒ_ƒ[ƒW‚ğó‚¯‚é
 	void HpDown(int num);
@@ -23,5 +23,5 @@ public:
 	void Heal();
 
 	// €‚ñ‚Å‚¢‚é‚©
-	bool IsDead();
+	bool IsDead() const;
 };
