@@ -16,7 +16,7 @@ void GameScene::PlayerTrun()
 	if (select == 1)
 	{
 		player->Attack();
-		for (const auto& e : enemy)
+		for (auto& e : enemy)
 		{
 			e->HpDown(player->ATK);
 		}
@@ -61,8 +61,9 @@ void GameScene::Init()
 {
 	printf("ゲームシーン\n\n");
 
-	// 敵を生成
-	enemy.push_back(std::unique_ptr<Enemy>(EnemyFactory::CreateEnemy(3)));
+	// 敵をプールから取得
+	auto e = EnemyFactory::CreateEnemy(3);
+	enemy.push_back(std::move(e));
 	printf("%sが現れた！\n\n", enemy[0]->Name);
 
 	// プレイヤーを生成

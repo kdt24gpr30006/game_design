@@ -36,9 +36,14 @@ public:
 			pool->Release(obj);
 		}
 	}
-	// アクセス演算子
+
+	// 通常アクセス
 	T* operator->() { return obj; }
 	T& operator*() { return *obj; }
+
+	// const対応
+	const T* operator->() const { return obj; }
+	const T& operator*() const { return *obj; }
 };
 
 template <typename T>

@@ -2,13 +2,14 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include "ObjectPool.h"
 #include "SceneManager.h"
 #include "Enemy.h"
 #include "Player.h"
 
 class GameScene : public Scene
 {
-	std::vector<std::unique_ptr<Enemy>> enemy;
+	std::vector<PoolHandle<Enemy>> enemy;
 	std::unique_ptr<Player> player;
 
 public:

@@ -12,18 +12,20 @@ const EnemyData EnemyFactory::EnemyTable[] =
 // データテーブルのサイズ
 const int EnemyFactory::EnemyTableSize = sizeof(EnemyFactory::EnemyTable) / sizeof(EnemyFactory::EnemyTable[0]);
 
-Enemy* EnemyFactory::CreateEnemy(int ID)
+// プールを容量 10 で初期化
+ObjectPool<Enemy> EnemyFactory::enemyPool(10);
+
+PoolHandle<Enemy> EnemyFactory::CreateEnemy(int ID)
 {
-    // データテーブルを検索
-    for (int i = 0; i < EnemyTableSize; ++i) 
+    for (int i = 0; i < EnemyTableSize; ++i)
     {
-        if (EnemyTable[i].ID == ID) 
+        if (EnemyTable[i].ID == ID)
         {
-            // ID が見つかった場合は新しい Enemy オブジェクトを生成して返す
-            return new Enemy(EnemyTable[i]);
+            auto handle = enemyPool.Acquire();
+            handle->SetData(EnemyTable[i]);
+            return handle;
         }
     }
 
-    // ID が見つからなかった場合は nullptr を返す
-    return nullptr;
+    throw std::runtime_error("Invalid Enemy ID");
 }
