@@ -6,11 +6,15 @@
 #include "SceneManager.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "BattleView.h"
 
 class GameScene : public Scene
 {
+	std::string sceneName = "ÉQÅ[ÉÄ";
+
 	std::vector<PoolHandle<Enemy>> enemy;
 	std::unique_ptr<Player> player;
+	std::unique_ptr<BattleView> view;
 
 public:
 	

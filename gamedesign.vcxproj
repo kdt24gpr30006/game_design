@@ -127,23 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\EnemyFactor.cpp" />
     <ClCompile Include="src\gamedesign.cpp" />
     <ClCompile Include="src\GameScene.cpp" />
-    <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BattleView.h" />
     <ClInclude Include="src\Enemy.h" />
     <ClInclude Include="src\EnemyData.h" />
     <ClInclude Include="src\EnemyFactor.h" />
     <ClInclude Include="src\GameScene.h" />
+    <ClInclude Include="src\ModelBase.h" />
     <ClInclude Include="src\ObjectPool.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\SceneManager.h" />
     <ClInclude Include="src\TitleScene.h" />
+    <ClInclude Include="src\TitleView.h" />
+    <ClInclude Include="src\View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

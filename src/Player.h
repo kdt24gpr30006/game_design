@@ -1,27 +1,27 @@
 #pragma once
-#include <iostream>
+#include <algorithm>
+#include <string>
+#include "ModelBase.h"
 
-class Player
+class Player : public ModelBase
 {
-public:
-
-	// ステータス
-	int HP = 0;
-	int ATK = 0;
+	// 回復量
 	int HEAL = 0;
 
-	Player() : HP(100), ATK(15), HEAL(30) {}
+public:
+
+	Player() : ModelBase("プレイヤー", 100, 15), HEAL(30) {}
 	~Player() {}
-
-	// 攻撃
-	void Attack() const;
-
-	// ダメージを受ける
-	void HpDown(int num);
+	
+	// 回復量取得
+	int GetHeal() const
+	{
+		return HEAL;
+	}
 
 	// 回復
-	void Heal();
-
-	// 死んでいるか
-	bool IsDead() const;
+	void Heal()
+	{
+		HP += HEAL;
+	}
 };

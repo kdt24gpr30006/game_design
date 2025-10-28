@@ -6,30 +6,34 @@
 void GameScene::PlayerTrun()
 {
 	// コマンド説明
-	printf("1で攻撃 2で回復\n\n");
+	view->InputManual1();
 
-	// 入力
-	int select = 0;
-	std::cin >> select;
+	// 入力された数値を保存
+	int inputNum = 0;
+	std::cin >> inputNum;
 
 	// 1が入力されたら攻撃
-	if (select == 1)
+	if (inputNum == 1)
 	{
-		player->Attack();
-		for (auto& e : enemy)
-		{
-			e->HpDown(player->ATK);
-		}
+		enemy[0]->HpDown(player->GetAtk());
+
+		// 情報表示
+		view->ShowDamage(player->GetName(), player->GetAtk());
+		view->ShowHp(enemy[0]->GetName(), enemy[0]->GetHp());
 	}
 	// 2が入力されたら回復
-	else if (select == 2)
+	else if (inputNum == 2)
 	{
 		player->Heal();
+
+		// 情報表示
+		view->ShowHeal(player->GetName(), player->GetHeal());
+		view->ShowHp(player->GetName(), player->GetHp());
 	}
 	// それ以外ならもう一度
 	else
 	{
-		printf("1か2を入力してください\n\n");
+		view->InputMiss();
 		return;
 	}
 }
@@ -37,37 +41,46 @@ void GameScene::PlayerTrun()
 void GameScene::EnemyTrun()
 {
 	// 敵の攻撃
-	enemy[0]->Attack();
-	player->HpDown(enemy[0]->ATK);
+	player->HpDown(enemy[0]->GetAtk());
+
+	// 情報表示
+	view->ShowDamage(enemy[0]->GetName(), enemy[0]->GetAtk());
+	view->ShowHp(player->GetName(), player->GetHp());
 }
 
 void GameScene::GameEnd(bool isWin)
 {
 	// 勝敗結果表示
-	if (isWin == true)
+	view->ShowResult(isWin);
+
+	view->InputManual2();
+
+	// 何か入力されたら
+	int a = 0;
+	if (std::cin >> a)
 	{
-		std::printf("You Win!\n\n");
-	}
-	else
-	{
-		std::printf("You Lose...\n\n");
+		// タイトルシーンに変更
+		GameObject::GetInstance().SetScene(std::make_unique<TitleScene>());
 	}
 
-	// タイトルシーンに変更
-	GameObject::GetInstance().SetScene(std::make_unique<TitleScene>());
 }
 
 void GameScene::Init()
 {
-	printf("ゲームシーン\n\n");
+	// コンソールクリア
+	system("cls");
+
+	// シーン名表示
+	view->SceneName(sceneName);
 
 	// 敵をプールから取得
 	auto e = EnemyFactory::CreateEnemy(3);
 	enemy.push_back(std::move(e));
-	printf("%sが現れた！\n\n", enemy[0]->Name);
 
 	// プレイヤーを生成
 	player = std::make_unique<Player>();
+	// ビューを生成
+	view = std::make_unique<BattleView>();
 }
 
 void GameScene::Update()
@@ -79,7 +92,7 @@ void GameScene::Update()
 		PlayerTrun();
 
 		// 敵が死んでいたら終了
-		if (enemy[0]->IsDead())
+		if (enemy[0]->IsAlive())
 		{
 			GameEnd(true);
 			break;
@@ -89,7 +102,7 @@ void GameScene::Update()
 		EnemyTrun();
 
 		// プレイヤーが死んでいたら終了
-		if (player->IsDead())
+		if (player->IsAlive())
 		{
 			GameEnd(false);
 			break;

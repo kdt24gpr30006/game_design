@@ -4,14 +4,19 @@
 
 void TitleScene::Init()
 {
-	printf("タイトルシーン\n\n");
+	// コンソールクリア
+	system("cls");
+
+	// シーン名表示
+	view->SceneName(sceneName);
 }
 
 void TitleScene::Update()
 {
 	while (true)
 	{
-		printf("1でゲームシーン 2で終了\n\n");
+		// コマンド説明
+		view->InputManual();
 
 		// 入力された数値を保存
 		int inputNum = 0;
@@ -29,9 +34,10 @@ void TitleScene::Update()
 			exit(0);
 			break;
 		}
+		// それ以外ならもう一度
 		else
 		{
-			printf("無効な数字です\n\n");
+			view->InputMiss();
 		}
 	}
 }

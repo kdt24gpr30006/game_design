@@ -1,8 +1,12 @@
 #pragma once
 #include "SceneManager.h"
+#include "TitleView.h"
 
 class TitleScene : public Scene
 {
+	std::string sceneName = "ƒ^ƒCƒgƒ‹";
+	std::unique_ptr<TitleView> view;
+
 public:
 	TitleScene() {}
 	~TitleScene() {}

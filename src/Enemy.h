@@ -1,15 +1,15 @@
 #pragma once
-#include <iostream>
 #include "EnemyData.h"
+#include <algorithm>
+#include <string>
+#include "ModelBase.h"
 
-class Enemy {
+class Enemy : public ModelBase
+{
+	// ID
+	int ID;
 
 public:
-	// ステータス
-	int ID;
-	const char* Name;
-	int HP;
-	int ATK;
 
 	Enemy() = default;
 	Enemy(const EnemyData& argData) { SetData(argData); }
@@ -22,13 +22,4 @@ public:
 		HP = argData.HP;
 		ATK = argData.ATK;
 	}
-
-	// 攻撃
-	void Attack() const;
-
-	// ダメージを受ける
-	void HpDown(int num);
-
-	// 死んでいるか
-	bool IsDead() const;
 };

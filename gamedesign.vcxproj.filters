@@ -19,20 +19,20 @@
     <Filter Include="ヘッダー ファイル\Scene">
       <UniqueIdentifier>{b33f781a-8e18-44f9-b4b0-f5a24cf9cd89}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Entity">
-      <UniqueIdentifier>{2c397f75-69cb-4c6c-9a54-042dfcd5a253}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\main">
       <UniqueIdentifier>{484a9d20-7065-449d-a508-c74f52d935d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Entity">
-      <UniqueIdentifier>{bc790f41-f7f5-441b-914f-4b5aeb4b6631}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\design">
       <UniqueIdentifier>{aad578a1-5bfa-4344-aba1-693b85710bce}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\design">
       <UniqueIdentifier>{76d7c427-106e-401e-ba3a-0fbc9bbef0e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\View">
+      <UniqueIdentifier>{27fb78dd-ec4f-4d2c-867b-57ccb8873995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Model">
+      <UniqueIdentifier>{2c397f75-69cb-4c6c-9a54-042dfcd5a253}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,12 +47,6 @@
     </ClCompile>
     <ClCompile Include="src\gamedesign.cpp">
       <Filter>ソース ファイル\main</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Player.cpp">
-      <Filter>ソース ファイル\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enemy.cpp">
-      <Filter>ソース ファイル\Entity</Filter>
     </ClCompile>
     <ClCompile Include="src\EnemyFactor.cpp">
       <Filter>ソース ファイル\design</Filter>
@@ -69,10 +63,10 @@
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Player.h">
-      <Filter>ヘッダー ファイル\Entity</Filter>
+      <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
     <ClInclude Include="src\Enemy.h">
-      <Filter>ヘッダー ファイル\Entity</Filter>
+      <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
     <ClInclude Include="src\EnemyData.h">
       <Filter>ヘッダー ファイル\design</Filter>
@@ -82,6 +76,18 @@
     </ClInclude>
     <ClInclude Include="src\ObjectPool.h">
       <Filter>ヘッダー ファイル\design</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BattleView.h">
+      <Filter>ヘッダー ファイル\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\View.h">
+      <Filter>ヘッダー ファイル\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TitleView.h">
+      <Filter>ヘッダー ファイル\View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelBase.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
