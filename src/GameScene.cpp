@@ -12,17 +12,23 @@ void GameScene::PlayerTrun()
 	int inputNum = 0;
 	std::cin >> inputNum;
 
+	const int INPUT_ATTACK = 1;
+	const int INPUT_HEAL = 2;
+
 	// 1が入力されたら攻撃
-	if (inputNum == 1)
+	if (inputNum == INPUT_ATTACK)
 	{
-		enemy[0]->HpDown(player->GetAtk());
+		for (auto& enemy : enemies)
+		{
+		enemy->HpDown(player->GetAtk());
 
 		// 情報表示
 		view->ShowDamage(player->GetName(), player->GetAtk());
-		view->ShowHp(enemy[0]->GetName(), enemy[0]->GetHp());
+		view->ShowHp(enemy->GetName(), enemy->GetHp());
+		}
 	}
 	// 2が入力されたら回復
-	else if (inputNum == 2)
+	else if (inputNum == INPUT_HEAL)
 	{
 		player->Heal();
 
@@ -40,12 +46,15 @@ void GameScene::PlayerTrun()
 
 void GameScene::EnemyTrun()
 {
-	// 敵の攻撃
-	player->HpDown(enemy[0]->GetAtk());
+	for (const auto& enemy : enemies)
+	{
+		// 敵の攻撃
+		player->HpDown(enemy->GetAtk());
 
-	// 情報表示
-	view->ShowDamage(enemy[0]->GetName(), enemy[0]->GetAtk());
-	view->ShowHp(player->GetName(), player->GetHp());
+		// 情報表示
+		view->ShowDamage(enemy->GetName(), enemy->GetAtk());
+		view->ShowHp(player->GetName(), player->GetHp());
+	}
 }
 
 void GameScene::GameEnd(bool isWin)
@@ -56,8 +65,8 @@ void GameScene::GameEnd(bool isWin)
 	view->InputManual2();
 
 	// 何か入力されたら
-	int a = 0;
-	if (std::cin >> a)
+	int input = 0;
+	if (std::cin >> input)
 	{
 		// タイトルシーンに変更
 		GameObject::GetInstance().SetScene(std::make_unique<TitleScene>());
@@ -73,9 +82,11 @@ void GameScene::Init()
 	// シーン名表示
 	view->SceneName(sceneName);
 
+	const int CREATE_ENEMY_ID = 3;
+
 	// 敵をプールから取得
-	auto e = EnemyFactory::CreateEnemy(3);
-	enemy.push_back(std::move(e));
+	auto createEnemy = EnemyFactory::CreateEnemy(CREATE_ENEMY_ID);
+	enemies.push_back(std::move(createEnemy));
 
 	// プレイヤーを生成
 	player = std::make_unique<Player>();
@@ -90,9 +101,20 @@ void GameScene::Update()
 	{
 		// プレイヤーのターン
 		PlayerTrun();
-
-		// 敵が死んでいたら終了
-		if (enemy[0]->IsAlive())
+		
+		// 敵がすべて死んでいるか
+		bool isAllDead = true;
+		for (const auto& enemy : enemies)
+		{
+			// 一体でも生きている
+			if (enemy->IsAlive() == false)
+			{
+				isAllDead = false;
+				break;
+			}
+		}
+		// 死んでたら終了
+		if (isAllDead == true)
 		{
 			GameEnd(true);
 			break;

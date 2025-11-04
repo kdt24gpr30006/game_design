@@ -5,12 +5,16 @@
 
 class Player : public ModelBase
 {
+	const int HP_MAX = 100;
+	const int ATK_MAX = 15;
+	const int HEAL_POWER = 30;
+
 	// 回復量
 	int HEAL = 0;
 
 public:
 
-	Player() : ModelBase("プレイヤー", 100, 15), HEAL(30) {}
+	Player() : ModelBase("プレイヤー", HP_MAX, ATK_MAX), HEAL(HEAL_POWER) {}
 	~Player() {}
 	
 	// 回復量取得
@@ -23,5 +27,7 @@ public:
 	void Heal()
 	{
 		HP += HEAL;
+		// 最大HPを超えないように
+		HP = std::min(HP, HP_MAX);
 	}
 };

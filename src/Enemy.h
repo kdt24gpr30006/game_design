@@ -11,7 +11,7 @@ class Enemy : public ModelBase
 
 public:
 
-	Enemy() = default;
+	Enemy() : ID(-1) {}
 	Enemy(const EnemyData& argData) { SetData(argData); }
 
 	// データセット

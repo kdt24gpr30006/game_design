@@ -10,7 +10,7 @@ protected:
 	int ATK;
 public:
 
-	ModelBase() : Name(""), HP(0), ATK(0) {}
+	ModelBase() : Name(""), HP(-1), ATK(-1) {}
 	ModelBase(std::string name, int hp, int atk) : Name(name), HP(hp), ATK(atk) {}
 	virtual ~ModelBase() {}
 
@@ -42,6 +42,7 @@ public:
 	void HpDown(int num)
 	{
 		HP -= num;
+		// HPがマイナスにならないように
 		HP = std::max(0, HP);
 	}
 };
